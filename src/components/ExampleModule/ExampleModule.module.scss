@@ -1,0 +1,46 @@
+@import "styles/main";
+
+.container {
+	@include fullWidthModule;
+
+	overflow: hidden;
+	padding: 82px 20px;
+
+	@include desktop {
+		padding: 105px 110px;
+	}
+}
+
+.header {
+	@include headerFont;
+
+	width: 100%;
+	margin-bottom: 22px;
+	font-size: 40px;
+	line-height: 40px;
+
+	@include desktop {
+		width: 80%;
+		margin-bottom: 34px;
+		font-size: 70px;
+		line-height: 70px;
+	}
+}
+
+.body {
+	@include bodyFont;
+
+	width: 100%;
+	margin-top: 0;
+	margin-bottom: 39px;
+	line-height: 20px;
+
+	@include desktop {
+		width: 60%;
+		margin-top: 0;
+		margin-bottom: 42px;
+		color: $black;
+		font-size: 30px;
+		line-height: 30px;
+	}
+}

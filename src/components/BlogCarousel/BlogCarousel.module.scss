@@ -1,0 +1,53 @@
+@import "styles/main";
+
+.container {
+	color: inherit;
+
+	@include contentWidthModule;
+
+	padding-block: 50px !important;
+
+	.title {
+		margin-bottom: 36px;
+		color: $primaryColor;
+		font-size: 25px;
+		font-weight: 600;
+
+		@include subheaderFont;
+	}
+
+	.postCarousel {
+		padding: 90px 0;
+	}
+}
+
+.container :global {
+	.swiper-button-disabled {
+		background: $primaryColor !important;
+	}
+
+	.swiper-button {
+		&-next,
+		&-prev {
+			top: 50px;
+			width: 40px;
+			height: 40px;
+			background-color: $primaryColor;
+			border-radius: 50%;
+			color: $white;
+
+			&::after {
+				font-size: 12px;
+			}
+		}
+
+		&-prev {
+			right: 280px;
+			left: unset;
+		}
+
+		&-next {
+			right: 230px;
+		}
+	}
+}

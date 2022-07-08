@@ -1,0 +1,54 @@
+@import "styles/main";
+
+.container {
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	justify-content: center;
+	background-color: $electricPurple;
+}
+
+.contactModule {
+	width: 100%;
+	padding: 82px 20px;
+	background-color: $electricPurple;
+	text-align: center;
+
+	@include tablet {
+		width: $columnWidth * 4 + $gutterWidth * 3;
+	}
+}
+
+.headerContainer {
+	font-family: "Ideal Sans", sans-serif;
+	font-weight: 400;
+}
+
+.headerText {
+	color: $white;
+	font-size: 40px;
+	text-transform: uppercase;
+}
+
+.btn {
+	width: 100%;
+	padding: 8px 0;
+	border: none;
+	background-color: $white;
+	border-radius: 15px;
+	color: $electricPurple;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 200;
+	text-transform: uppercase;
+
+	&:hover {
+		border: 1px solid $white;
+		background-color: $electricPurple;
+		color: $white;
+	}
+}
+
+.btnContainer {
+	margin-top: 30px;
+}

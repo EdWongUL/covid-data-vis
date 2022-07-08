@@ -1,0 +1,51 @@
+@import "styles/main";
+
+.inputContainer {
+	margin-bottom: 10px;
+}
+
+.formControl {
+	width: 100%;
+	padding: 10px;
+	border: none;
+	background-color: $electricViolet;
+	border-radius: 15px;
+	color: $white;
+	font-weight: 200;
+
+	&:focus-visible {
+		outline: 0;
+		outline: 1px solid $white;
+	}
+
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus,
+	&:-webkit-autofill:active {
+		transition: "color 9999s ease-out, background-color 9999s ease-out";
+		transition-delay: 9999s;
+	}
+
+	&::placeholder {
+		color: $white;
+		font-family: "Ideal Sans", sans-serif;
+		text-transform: uppercase;
+	}
+}
+
+.invalidFeedback {
+	margin-top: 10px;
+	color: $error;
+	font-family: "Ideal Sans", sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.textArea {
+	min-height: 80px;
+}
+
+.isInvalid {
+	border: 1px solid $error;
+}

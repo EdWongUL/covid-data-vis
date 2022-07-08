@@ -1,0 +1,66 @@
+@import "styles/main";
+
+.container {
+	overflow: default;
+
+	@include contentWidthModule;
+
+	padding-block: 50px !important;
+
+	.title {
+		@include subheaderFont;
+
+		margin-bottom: 40px;
+		color: $primaryColor;
+		font-size: 30px;
+		font-weight: 600;
+		text-transform: uppercase;
+
+		@include desktop {
+			font-size: 40px;
+		}
+	}
+
+	.blogHeader {
+		@include laptop {
+			max-width: 812px;
+			margin: auto;
+		}
+	}
+
+	.blogContent {
+		@include laptop {
+			max-width: 812px;
+			margin: auto;
+		}
+
+		p {
+			@include subheaderFont;
+
+			margin-bottom: 40px;
+			font-size: 20px;
+			font-weight: 300;
+
+			@include desktop {
+				font-size: 25px;
+			}
+		}
+
+		figure {
+			height: auto;
+			margin: 0;
+
+			@include desktop {
+				width: 1088px;
+				margin-left: -138px;
+				margin-block: 87px;
+			}
+
+			img {
+				width: 100%;
+				max-width: 100%;
+				border-radius: 44px;
+			}
+		}
+	}
+}

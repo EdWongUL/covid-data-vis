@@ -1,0 +1,130 @@
+@import "styles/main";
+
+.container {
+	@include fullWidthModule;
+
+	display: grid;
+	overflow: hidden;
+	padding: 82px 20px;
+	gap: 60px 30px;
+	grid-template-columns: repeat(4, 1fr);
+
+	@media (max-width: #{$laptop}) {
+		grid-template-columns: repeat(2, 1fr) !important;
+	}
+
+	@media (max-width: #{$tablet}) {
+		grid-template-columns: repeat(1, 1fr) !important;
+	}
+
+	@include tablet {
+		padding: 105px 32px;
+	}
+
+	@include laptop {
+		padding: 180px 220px;
+	}
+
+	.item {
+		display: flex;
+		overflow: hidden;
+		width: 100%;
+		max-width: 400px;
+		flex-flow: column nowrap;
+		align-items: center;
+		align-self: baseline;
+		justify-content: center;
+		padding: 16px;
+		justify-self: center;
+
+		.name {
+			width: 100%;
+			margin-bottom: 30px;
+			color: #b100ff;
+			font-family: "Ideal Sans", Arial, sans-serif;
+			text-align: center;
+
+			@include standfirstText(25px);
+		}
+
+		.description {
+			width: 100%;
+			color: $black;
+			font-family: "Ideal Sans", Arial, sans-serif;
+			text-align: center;
+
+			@include bodyFont(18px);
+		}
+
+		.icon {
+			position: relative;
+			width: 100%;
+			height: 78px;
+			margin-bottom: 60px;
+
+			.inner {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				height: 78px;
+				transform: translate(-50%, -50%);
+				transition: transform 0.2s ease-in-out;
+
+				> svg {
+					height: 100%;
+				}
+			}
+		}
+
+		&.Grow:hover {
+			.icon .inner {
+				transform: translate(-50%, -50%) scale(1.1);
+			}
+		}
+
+		&.Bounce:hover {
+			.icon .inner {
+				animation-duration: 0.8s;
+				animation-iteration-count: infinite;
+				animation-name: bounce;
+				animation-timing-function: linear;
+			}
+		}
+
+		&.Rollout:hover {
+			.icon .inner {
+				animation-duration: 1s;
+				animation-iteration-count: once;
+				animation-name: rollout;
+				animation-timing-function: ease-in-out;
+			}
+		}
+	}
+}
+
+@keyframes bounce {
+	25% {
+		transform: translate(-50%, -50%) scale(1.1);
+	}
+
+	75% {
+		transform: translate(-50%, -50%) scale(0.9);
+	}
+}
+
+@keyframes rollout {
+	50% {
+		left: calc(100% + 100px);
+		transform: translate(-50%, -50%) rotate(180deg);
+	}
+
+	51% {
+		left: -100px;
+		transform: translate(-50%, -50%) rotate(-180deg);
+	}
+
+	100% {
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(0);
+	}
+}

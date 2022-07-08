@@ -1,0 +1,83 @@
+@import "styles/main";
+
+.bg-pink {
+	background-color: $electricPurple;
+	color: $white;
+}
+
+.container {
+	display: grid;
+	height: 395px;
+	align-items: center;
+	justify-content: center;
+
+	@include tablet {
+		height: 507px;
+	}
+
+	@include desktop {
+		height: 528px;
+	}
+}
+
+.newsletter {
+	font-family: "Ideal Sans", sans-serif;
+	padding-inline: 20px;
+	text-align: center;
+
+	@include tablet {
+		width: $columnWidth * 3.5 + $gutterWidth * 2;
+		padding-inline: 0;
+	}
+
+	@include desktop {
+		width: $columnWidth * 4 + $gutterWidth * 3;
+	}
+
+	&Title {
+		margin-bottom: 45px;
+		font-size: 20px;
+		font-weight: 600;
+		text-transform: uppercase;
+
+		@include tablet {
+			font-size: 40px;
+		}
+
+		@include desktop {
+			// font-size:40px;
+		}
+	}
+
+	&Description {
+		margin-top: 25px;
+		margin-bottom: 25px;
+		font-size: 14px;
+		line-height: 17px;
+	}
+
+	&ErrorMessage {
+		margin-bottom: 12px;
+		color: $error;
+		font-size: 14px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&Success {
+		padding-bottom: 0;
+		padding-left: 14px;
+		margin-top: 1em;
+		margin-bottom: 0;
+		color: lighten(green, 0.2);
+	}
+}
+
+.invalidFeedback {
+	margin-top: 10px;
+	color: $error;
+	font-family: "Ideal Sans", sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: uppercase;
+}

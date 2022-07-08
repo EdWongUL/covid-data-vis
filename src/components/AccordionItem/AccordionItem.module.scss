@@ -1,0 +1,100 @@
+@import "styles/main";
+
+.container {
+	@include fullWidthModule;
+
+	display: flex;
+	overflow: hidden;
+	max-width: 812px;
+	flex-direction: column;
+	justify-content: center;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	&.center {
+		justify-content: center;
+		margin-inline: auto;
+		text-align: center;
+	}
+}
+
+.line {
+	width: 100%;
+	margin: 0;
+}
+
+.headerContainer {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	color: $primaryColor;
+	font-size: 40px;
+	line-height: 40px;
+	margin-block: 31px 32px;
+	text-transform: uppercase;
+
+	@include tablet {
+		margin-block: 23px 15px;
+	}
+
+	@include desktop {
+		margin-block: 23px 15px;
+	}
+}
+
+.header {
+	margin: 0;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 17px;
+
+	@include tablet {
+		font-size: 20px;
+		line-height: 40px;
+	}
+
+	@include desktop {
+		font-size: 20px;
+		line-height: 40px;
+	}
+}
+
+.arrow {
+	display: flex;
+	align-self: center;
+	cursor: pointer;
+	justify-self: center;
+	transition: all 0.2s linear;
+
+	&-open {
+		@extend .arrow;
+
+		transform: rotate(180deg);
+	}
+
+	&-close {
+		@extend .arrow;
+
+		transform: rotate(0deg);
+	}
+}
+
+.bodyContainer {
+	overflow: hidden;
+	transition: all 0.2s linear;
+}
+
+.body {
+	padding-bottom: 20px;
+	margin: 0;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 25px;
+	white-space: pre-wrap;
+
+	@include tablet {
+		font-size: 25px;
+		line-height: 30px;
+	}
+}

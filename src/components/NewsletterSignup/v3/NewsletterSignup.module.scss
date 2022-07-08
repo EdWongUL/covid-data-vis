@@ -1,0 +1,149 @@
+@import "styles/main";
+
+.bg-pink {
+	background-color: $electricPurple;
+	color: $white;
+}
+
+.container {
+	display: grid;
+	height: 395px;
+	align-items: center;
+	justify-content: center;
+
+	@include tablet {
+		height: 507px;
+	}
+
+	@include desktop {
+		height: 528px;
+	}
+}
+
+.newsletter {
+	font-family: "Ideal Sans", sans-serif;
+	padding-inline: 20px;
+	text-align: center;
+
+	@include tablet {
+		width: $columnWidth * 3.5 + $gutterWidth * 2;
+		padding-inline: 0;
+	}
+
+	@include desktop {
+		width: unset;
+		padding-inline: 140px;
+	}
+
+	&Title {
+		margin-bottom: 0;
+		font-size: 20px;
+		font-weight: 600;
+		text-transform: uppercase;
+
+		@include tablet {
+			font-size: 30px;
+		}
+
+		@include desktop {
+			font-size: 40px;
+		}
+	}
+
+	&Description {
+		margin-top: 20px;
+		font-size: 14px;
+		line-height: 17px;
+
+		@include desktop {
+			font-size: 25px;
+			line-height: 30px;
+		}
+	}
+
+	&ErrorMessage {
+		margin-bottom: 12px;
+		color: $error;
+		font-size: 14px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&Success {
+		padding-bottom: 0;
+		padding-left: 14px;
+		margin-top: 1em;
+		margin-bottom: 0;
+		color: lighten(green, 0.2);
+	}
+}
+
+.titleContainer {
+	text-align: left;
+}
+
+.inputContainer {
+	display: grid;
+	align-self: flex-end;
+	gap: 15px;
+
+	@include tablet {
+		grid-template-columns: 1fr 180px;
+	}
+
+	@include desktop {
+		grid-template-columns: 1fr 260px;
+	}
+}
+
+.formGrid {
+	@include desktop {
+		display: grid;
+		gap: 100px;
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.isInvalid {
+	border-bottom: 1px solid $error;
+}
+
+.invalidFeedback {
+	height: 12px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: $error;
+	font-family: "Ideal Sans", sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.formControl {
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-bottom: 2px solid $electricViolet;
+	background-color: transparent;
+	color: $white;
+	font-weight: 200;
+	outline: none;
+
+	&:focus-visible {
+		outline: 0;
+	}
+
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus,
+	&:-webkit-autofill:active {
+		transition: "color 9999s ease-out, background-color 9999s ease-out";
+		transition-delay: 9999s;
+	}
+
+	&::placeholder {
+		color: $white;
+		font-family: "Ideal Sans", sans-serif;
+		text-transform: uppercase;
+	}
+}
