@@ -39,6 +39,7 @@
     "react-date-range": "^1.4.0",
     "react-dom": "18.0.0",
     "react-select": "^5.4.0",
+    "react-tooltip": "^4.2.21",
     "rooks": "^5.11.8",
     "sass": "^1.32.7",
     "swiper": "^8.2.6",

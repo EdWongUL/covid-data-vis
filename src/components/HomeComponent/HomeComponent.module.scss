@@ -1,1 +1,15 @@
 @import "styles/main.scss";
+
+.loadingHeader {
+	font-size: 40px;
+	font-weight: 700;
+	grid-area: 1/1/2/2;
+	text-align: center;
+}
+
+.graphContainer {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	justify-items: center;
+}

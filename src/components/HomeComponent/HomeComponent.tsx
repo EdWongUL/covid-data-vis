@@ -19,13 +19,17 @@ const HomeComponent = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.container}>
-				<LoadingComponent loading={loading} />
-				<GraphComponent
-					setLoading={setLoading}
-					country={country}
-					startDate={startDate}
-					endDate={endDate}
-				/>
+				<div className={styles.loadingHeader}>Covid Deaths Data</div>
+				<div className={styles.graphContainer}>
+					<LoadingComponent loading={loading} />
+					<GraphComponent
+						loading={loading}
+						setLoading={setLoading}
+						country={country}
+						startDate={startDate}
+						endDate={endDate}
+					/>
+				</div>
 				<CountryComponent setCountry={setCountry} country={country} />
 				<TimeComponent
 					setStartDate={setStartDate}

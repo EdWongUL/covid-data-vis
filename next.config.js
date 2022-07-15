@@ -1,12 +1,6 @@
 require('dotenv').config();
 
-const { 
-	STRAPI_URL,
-	STRAPI_WEBHOOK_SECRET,
-	GTM_ID,
-	BASE_URL,
-	NODE_ENV
-} = process.env;
+const { GTM_ID, BASE_URL, NODE_ENV } = process.env;
 
 const nextConfig = {
 	webpack: (config, options) => {
@@ -15,15 +9,11 @@ const nextConfig = {
 
 		return config;
 	},
-	serverRuntimeConfig: {
-		STRAPI_URL: STRAPI_URL,
-		STRAPI_WEBHOOK_SECRET: STRAPI_WEBHOOK_SECRET,
-	},
 	publicRuntimeConfig: {
 		// add any public environment variables here
 		GTM_ID: GTM_ID,
 		BASE_URL: BASE_URL,
-		NODE_ENV: NODE_ENV
+		NODE_ENV: NODE_ENV,
 	},
 	images: {
 		domains: ['storage.googleapis.com', 'localhost'],
@@ -33,10 +23,6 @@ const nextConfig = {
 			source: '/',
 			destination: '/home',
 		},
-		{
-			source: '/api/admin/:endpoint*',
-			destination: `${STRAPI_URL}/api/:endpoint*`,
-		}
 	],
 };
 
