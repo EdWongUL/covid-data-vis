@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import styles from './TimeComponent.module.scss';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { DateRangePicker, Range } from 'react-date-range';
@@ -15,7 +14,6 @@ export type TimeProps = {
 const tmpMax = new Date();
 tmpMax.setDate(tmpMax.getDate() - 1);
 
-// deaths only
 const TimeComponent: React.ComponentType<TimeProps> = ({
 	setStartDate,
 	setEndDate,

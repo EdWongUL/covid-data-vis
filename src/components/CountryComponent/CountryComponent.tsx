@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import styles from './CountryComponent.module.scss';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Select from 'react-select';
@@ -9,7 +8,6 @@ export type CountryProps = {
 	country: string;
 };
 
-// deaths only
 const CountryComponent: React.ComponentType<CountryProps> = ({ setCountry, country }) => {
 	const [countries, setCountries] = useState<{ value: string; label: string }[]>();
 

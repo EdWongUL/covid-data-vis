@@ -1,6 +1,7 @@
 import styles from './LoadingComponent.module.scss';
 import React from 'react';
 import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 export type LoadingProps = {
 	loading: boolean;
@@ -9,7 +10,10 @@ export type LoadingProps = {
 const LoadingComponent: React.ComponentType<LoadingProps> = ({ loading }) => (
 	<div className={styles.loadingContainer}>
 		<motion.div
-			className={styles[`loadingCircle-${loading ? 'show' : 'hide'}`]}
+			className={classNames(styles.loadingCircle, {
+				[styles.show]: loading,
+				[styles.hide]: !loading,
+			})}
 			animate={{ rotate: 360, transition: { rotate: { duration: 1, repeat: Infinity } } }}
 		/>
 	</div>

@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-console */
 import styles from './GraphComponent.module.scss';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Papa from 'papaparse';
 import * as d3 from 'd3';
 import { motion } from 'framer-motion';
@@ -55,10 +52,7 @@ const GraphComponent: React.ComponentType<GraphProps> = ({
 	const [dataMin, setDataMin] = useState(-Infinity);
 	const [dataMax, setDataMax] = useState(Infinity);
 
-	// from index of data to pixel
-	// const scaleX = d3.scaleLinear().domain([startDate, endDate]).range([0, 900]);
 	const scaleX = d3.scaleTime().domain([startDate, endDate]).range([0, 900]);
-	// from values in array to pixel values
 	const scaleY = d3.scaleLinear().domain([dataMin, dataMax]).range([-500, 0]);
 
 	// triggers once at the start
@@ -121,7 +115,7 @@ const GraphComponent: React.ComponentType<GraphProps> = ({
 
 		setLoading(true);
 		getData();
-	}, [country, startDate, endDate]);
+	}, [country, startDate, endDate, setLoading, diff]);
 
 	// only trigger once datamin and max have been redefined in the above
 	useEffect(() => {
@@ -130,19 +124,18 @@ const GraphComponent: React.ComponentType<GraphProps> = ({
 			const p = d3
 				.line<{ date: Date; value: number }>()
 				.x((d) => scaleX(d.date))
-				.y((d) => -scaleY(d.value)); // there's got to be a way to multiply the scale by
-			// .curve(d3.curveNatural);
+				.y((d) => -scaleY(d.value));
 
 			setResultSVG(p(data) as string);
 			setLoading(false);
 		}
-	}, [dataMin, dataMax]);
+	}, [dataMin, dataMax, data, setLoading, scaleX, scaleY]);
 
 	// after a mouse move, we calculate the closest x point in the data, and snap the tooltip to that place
-	const handleMouseMove = (e: any) => {
+	const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
 		if (data !== undefined && !loading) {
 			// mouse pixel coord in X direction
-			const currentPos = e.clientX - e.target.getBoundingClientRect().left;
+			const currentPos = e.clientX - e.currentTarget.getBoundingClientRect().left;
 			// get the corresponding date by invertin scaleX (continuous)
 			const date = new Date(scaleX.invert(currentPos));
 			// for getting idx in an array of the data
@@ -182,7 +175,7 @@ const GraphComponent: React.ComponentType<GraphProps> = ({
 				<motion.path
 					d={resultSVG}
 					stroke="lightblue"
-					stroke-width="3"
+					strokeWidth="3"
 					fill="none"
 					variants={draw}
 				/>

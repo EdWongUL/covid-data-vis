@@ -3,28 +3,27 @@
 .container {
 	position: relative;
 	width: 900px;
-	// overflow: hidden;
 	border: solid 1px red;
 	margin: 50px auto;
 	grid-area: 1/1/2/2;
-}
 
-.tooltipPoint {
-	position: absolute;
-	width: 10px;
-	height: 10px;
-	border: 5px solid blue;
-	border-radius: 50%;
-	pointer-events: none;
-}
+	.tooltipPoint {
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		border: 5px solid blue;
+		border-radius: 50%;
+		pointer-events: none;
 
-.tooltip {
-	position: absolute;
-	top: 10px;
-	width: 90px;
-	padding: 5px;
-	border: solid 1px red;
-	background-color: lightcoral;
-	border-radius: 10px;
-	transform: translateX(-50%);
+		.tooltip {
+			position: absolute;
+			top: 10px;
+			width: 90px;
+			padding: 5px;
+			border: solid 1px red;
+			background-color: lightcoral;
+			border-radius: 10px;
+			transform: translateX(-50%);
+		}
+	}
 }
