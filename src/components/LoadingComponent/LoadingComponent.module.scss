@@ -2,7 +2,7 @@
 
 .loadingContainer {
 	grid-area: 1/1/2/2;
-	
+
 	.loadingCircle {
 		width: 100px;
 		height: 100px;
@@ -10,14 +10,13 @@
 		border-bottom-color: transparent;
 		border-radius: 50%;
 		transition: opacity 0.5s linear;
-		
+
 		&.show {
 			opacity: 1;
 		}
-		
+
 		&.hide {
 			opacity: 0;
 		}
 	}
-	
 }

@@ -1,5 +1,5 @@
 import styles from './GraphComponent.module.scss';
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import Papa from 'papaparse';
 import * as d3 from 'd3';
 import { motion } from 'framer-motion';
@@ -52,8 +52,14 @@ const GraphComponent: React.ComponentType<GraphProps> = ({
 	const [dataMin, setDataMin] = useState(-Infinity);
 	const [dataMax, setDataMax] = useState(Infinity);
 
-	const scaleX = d3.scaleTime().domain([startDate, endDate]).range([0, 900]);
-	const scaleY = d3.scaleLinear().domain([dataMin, dataMax]).range([-500, 0]);
+	const scaleX = useMemo(
+		() => d3.scaleTime().domain([startDate, endDate]).range([0, 900]),
+		[startDate, endDate]
+	);
+	const scaleY = useMemo(
+		() => d3.scaleLinear().domain([dataMin, dataMax]).range([-500, 0]),
+		[dataMin, dataMax]
+	);
 
 	// triggers once at the start
 	useEffect(() => {
