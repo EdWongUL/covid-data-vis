@@ -47,7 +47,10 @@ const GraphComponent: React.ComponentType<GraphProps> = ({
 	const [tooltipLeft, setTooltipLeft] = useState(0); // left position
 	const [tooltipDisplay, settooltipDisplay] = useState('none'); // display: none or block
 	const [tooltipText, setTooltipText] = useState(''); // tooltip text
-	const diff = Math.ceil((endDate.valueOf() - startDate.valueOf()) / (1000 * 60 * 60 * 24)); // difference in days
+	const diff = useMemo(
+		() => Math.ceil((endDate.valueOf() - startDate.valueOf()) / (1000 * 60 * 60 * 24)),
+		[startDate, endDate]
+	); // difference in days
 	// min and max of the array of values
 	const [dataMin, setDataMin] = useState(-Infinity);
 	const [dataMax, setDataMax] = useState(Infinity);
@@ -112,11 +115,13 @@ const GraphComponent: React.ComponentType<GraphProps> = ({
 			>([...arrayPromises, timeout]);
 
 			const totals = totalsTemp.slice(0, -1) as { date: Date; value: number }[];
-			setData(totals);
-			const valueArray = totals.map((el) => el.value);
-			const min = Math.min(...valueArray);
-			setDataMin(min);
-			setDataMax(Math.max(...valueArray));
+			if (totals.length > 0) {
+				setData(totals);
+				const valueArray = totals.map((el) => el.value);
+				const min = Math.min(...valueArray);
+				setDataMin(min);
+				setDataMax(Math.max(...valueArray));
+			}
 		};
 
 		setLoading(true);
@@ -135,7 +140,10 @@ const GraphComponent: React.ComponentType<GraphProps> = ({
 			setResultSVG(p(data) as string);
 			setLoading(false);
 		}
-	}, [dataMin, dataMax, data, setLoading, scaleX, scaleY]);
+		// TODO change scaleX to only change when both start and end have changed so we can
+		// add it back in this dependency array
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [dataMin, dataMax, data, setLoading, scaleY]);
 
 	// after a mouse move, we calculate the closest x point in the data, and snap the tooltip to that place
 	const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
